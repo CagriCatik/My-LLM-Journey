@@ -1,0 +1,51 @@
+site_name: My LLM Journey
+theme:
+  name: material
+  palette:
+    # Light mode
+    - scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Dark mode
+    - scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+nav:
+  - Home: index.md
+  - Build Your First LLM Product:
+      - Jumping Right into LLM Engineering: 01_first_llm_product/01_jumping_right_llm.md
+      - Setting Up Ollama for Local LLM Deployment: 01_first_llm_product/02_setting-up-ollama.md
+      - LLM Engineering Roadmap: 01_first_llm_product/03_llm-engineering-roadmap.md
+  - Build a Multi-Modal Chatbot:
+      - Multiple AI APIs: 02_multi_modal_chatbot/01_multiple_ai_apis.md
+      - Streaming AI Responses: 02_multi_modal_chatbot/02_streaming_ai_responses.md
+  - Open-Source Gen AI Solutions:
+      - Overview: 03_open-source-solutions/overview.md
+  - Model Evaluation for Code & Business Tasks:
+      - Overview: 04_model-evaluation/overview.md
+  - RAG with LangChain:
+      - Overview: 05_rag-with-langchain/overview.md
+  - Fine-Tuning with LoRA/QLoRA:
+      - Overview: 06_fine-tuning/overview.md
+  - Fine-Tuned Price Prediction Model:
+      - Overview: 07_fine-tuned-price-prediction/overview.md
+  - Autonomous Multi-Agent Systems:
+      - Overview: 08_autonomous-multi-agent/overview.md
+
+markdown_extensions:
+  - markdown.extensions.md_in_html
+  - admonition
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+extra_javascript:
+  - javascripts/mermaid.min.js
+  - https://unpkg.com/mermaid@10/dist/mermaid.min.js

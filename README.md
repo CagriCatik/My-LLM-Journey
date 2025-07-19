@@ -4,7 +4,9 @@ This guide presents a comprehensive, step-by-step roadmap for mastering large la
 
 Next, you’ll dive into open-source ecosystems-Hugging Face, Google Colab, and community models-learning how to deploy, fine-tune, and benchmark both proprietary and freely available LLMs. Rigorous evaluation methodologies and business-focused benchmarks will sharpen your ability to select and optimize models for real-world code and enterprise tasks. A dedicated section on retrieval-augmented generation with LangChain will teach you how to integrate external knowledge stores and design scalable RAG pipelines.
 
-Fine-tuning techniques using LoRA and QLoRA will equip you with parameter-efficient training skills, culminating in a competitive price-prediction model. The final module extends your expertise to autonomous multi-agent architectures, agentic workflows, and serverless deployment, enabling you to build intelligent systems that operate with minimal human intervention. Each chapter blends theory, practical tutorials, and project assignments to ensure you acquire both the conceptual understanding and the hands-on experience needed to become a proficient LLM engineer.
+Fine-tuning techniques using LoRA and QLoRA will equip you with parameter-efficient training skills, culminating in a competitive price-prediction model. The final module extends your expertise to autonomous multi-agent architectures, agentic workflows, and serverless deployment, enabling you to build intelligent systems that operate with minimal human intervention. Each chapter blends theory, practical tutorials, and project assignments to ensure you acquire both the conceptual understanding and the hands-on experience needed to become a proficient LLM engineer. 
+
+Content adapted from the [LLM Engineering: Master AI and Large Language Models](https://www.udemy.com/course/llm-engineering-master-ai-and-large-language-models/) course on Udemy.
 
 ## Table of Contents
 
@@ -18,7 +20,6 @@ Fine-tuning techniques using LoRA and QLoRA will equip you with parameter-effici
   - [6: Fine-Tuning with LoRA/QLoRA](#6-fine-tuning-with-loraqlora)
   - [7: Fine-Tuned Price Prediction Model](#7-fine-tuned-price-prediction-model)
   - [8: Autonomous Multi-Agent Systems](#8-autonomous-multi-agent-systems)
-  - [Source](#source)
 
 ## 1: Build Your First LLM Product
 
@@ -325,6 +326,4 @@ This final module advances you from fine-tuning to architecting fully autonomous
 
 </details>
 
-## Source
 
-Content adapted from the [LLM Engineering: Master AI and Large Language Models](https://www.udemy.com/course/llm-engineering-master-ai-and-large-language-models/) course on Udemy.
