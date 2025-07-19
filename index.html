@@ -1,0 +1,1331 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+        <link rel="next" href="01_first_llm_product/01_jumping_right_llm/">
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
+    
+    
+      
+        <title>My LLM Journey</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#my-llm-journey" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="." title="My LLM Journey" class="md-header__button md-logo" aria-label="My LLM Journey" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            My LLM Journey
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Home
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="My LLM Journey" class="md-nav__button md-logo" aria-label="My LLM Journey" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    My LLM Journey
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-build-your-first-llm-product" class="md-nav__link">
+    <span class="md-ellipsis">
+      1: Build Your First LLM Product
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-build-a-multi-modal-chatbot" class="md-nav__link">
+    <span class="md-ellipsis">
+      2: Build a Multi-Modal Chatbot
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-open-source-gen-ai-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      3: Open-Source Gen AI Solutions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-model-evaluation-for-code-business-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      4: Model Evaluation for Code &amp; Business Tasks
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-rag-with-langchain" class="md-nav__link">
+    <span class="md-ellipsis">
+      5: RAG with LangChain
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-fine-tuning-with-loraqlora" class="md-nav__link">
+    <span class="md-ellipsis">
+      6: Fine-Tuning with LoRA/QLoRA
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-fine-tuned-price-prediction-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      7: Fine-Tuned Price Prediction Model
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Build Your First LLM Product
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Build Your First LLM Product
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01_first_llm_product/01_jumping_right_llm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Jumping Right into LLM Engineering
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01_first_llm_product/02_setting-up-ollama/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Setting Up Ollama for Local LLM Deployment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01_first_llm_product/03_llm-engineering-roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LLM Engineering Roadmap
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Build a Multi-Modal Chatbot
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Build a Multi-Modal Chatbot
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02_multi_modal_chatbot/01_multiple_ai_apis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Multiple AI APIs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02_multi_modal_chatbot/02_streaming_ai_responses/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Streaming AI Responses
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Open-Source Gen AI Solutions
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Open-Source Gen AI Solutions
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03_open-source-solutions/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Model Evaluation for Code & Business Tasks
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Model Evaluation for Code & Business Tasks
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04_model-evaluation/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    RAG with LangChain
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            RAG with LangChain
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05_rag-with-langchain/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Fine-Tuning with LoRA/QLoRA
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Fine-Tuning with LoRA/QLoRA
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06_fine-tuning/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Fine-Tuned Price Prediction Model
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Fine-Tuned Price Prediction Model
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07_fine-tuned-price-prediction/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Autonomous Multi-Agent Systems
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Autonomous Multi-Agent Systems
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08_autonomous-multi-agent/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-build-your-first-llm-product" class="md-nav__link">
+    <span class="md-ellipsis">
+      1: Build Your First LLM Product
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-build-a-multi-modal-chatbot" class="md-nav__link">
+    <span class="md-ellipsis">
+      2: Build a Multi-Modal Chatbot
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-open-source-gen-ai-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      3: Open-Source Gen AI Solutions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-model-evaluation-for-code-business-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      4: Model Evaluation for Code &amp; Business Tasks
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-rag-with-langchain" class="md-nav__link">
+    <span class="md-ellipsis">
+      5: RAG with LangChain
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-fine-tuning-with-loraqlora" class="md-nav__link">
+    <span class="md-ellipsis">
+      6: Fine-Tuning with LoRA/QLoRA
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-fine-tuned-price-prediction-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      7: Fine-Tuned Price Prediction Model
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="my-llm-journey">My LLM Journey</h1>
+<h2 id="1-build-your-first-llm-product">1: Build Your First LLM Product</h2>
+<p>This first module guides you through every step needed to launch a working LLM application from scratch. You will install and configure local inference tools, deploy models with Ollama on Windows and Mac, and build a practical Spanish‐tutoring assistant to see results immediately. Along the way, you’ll establish a robust development environment-covering Conda, virtualenv, API key management, and best practices for Jupyter Lab-so you can iterate rapidly. By comparing leading models (OpenAI, Ollama, Claude, Gemini) and completing hands-on projects like a web-page summarizer, you’ll acquire the core skills and insights required to progress from beginner to confident LLM engineer.</p>
+<details>
+<summary>Click to expand Module Overview</summary>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Jumping Right into LLM Engineering  </li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Setting Up Ollama for Local LLM Deployment</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> LLM Engineering Roadmap</li>
+<li>Building LLM Applications: Chatbots, RAG, and Agentic AI Projects  </li>
+<li>From Wall Street to AI: Ed Donner's Path to Becoming an LLM Engineer  </li>
+<li>Setting Up Your LLM Development Environment: Tools and Best Practices  </li>
+<li>Mac Setup Guide: Jupyter Lab and Conda for LLM Projects  </li>
+<li>Setting Up Anaconda for LLM Engineering: Windows Installation Guide  </li>
+<li>Alternative Python Setup for LLM Projects: Virtualenv vs. Anaconda Guide  </li>
+<li>Setting Up OpenAI API for LLM Development: Keys, Pricing &amp; Best Practices  </li>
+<li>Creating a .env File for Storing API Keys Safely  </li>
+<li>Instant Gratification Project: Creating an AI-Powered Web Page Summarizer  </li>
+<li>Implementing Text Summarization Using OpenAI's GPT-4 and Beautiful Soup  </li>
+<li>Wrapping Up: Key Takeaways and Next Steps in LLM Engineering  </li>
+<li>LLM Engineering: Key Skills and Tools for AI Development  </li>
+<li>Understanding Frontier Models: GPT, Claude, and Open Source LLMs  </li>
+<li>How to Use Ollama for Local LLM Inference: Python Tutorial with Jupyter  </li>
+<li>Hands-On LLM Task: Comparing OpenAI and Ollama for Text Summarization  </li>
+<li>Frontier AI Models: Comparing GPT-4, Claude, Gemini, and LLAMA  </li>
+<li>Comparing Leading LLMs: Strengths and Business Applications  </li>
+<li>Exploring GPT-4o vs O1 Preview: Key Differences in Performance  </li>
+<li>Creativity and Coding: Leveraging GPT-4o’s Canvas Feature  </li>
+<li>Claude 3.5’s Alignment and Artifact Creation: A Deep Dive  </li>
+<li>AI Model Comparison: Gemini vs Cohere for Whimsical and Analytical Tasks  </li>
+<li>Evaluating Meta AI and Perplexity: Nuances of Model Outputs  </li>
+<li>LLM Leadership Challenge: Evaluating AI Models Through Creative Prompts  </li>
+<li>Revealing the Leadership Winner: A Fun LLM Challenge  </li>
+<li>Exploring the Journey of AI: From Early Models to Transformers  </li>
+<li>Understanding LLM Parameters: From GPT-1 to Trillion-Weight Models  </li>
+<li>GPT Tokenization Explained: How Large Language Models Process Text Input  </li>
+<li>How Context Windows Impact AI Language Models: Token Limits Explained  </li>
+<li>Navigating AI Model Costs: API Pricing vs. Chat Interface Subscriptions  </li>
+<li>Comparing LLM Context Windows: GPT-4 vs Claude vs Gemini 1.5 Flash  </li>
+<li>Wrapping Up: Key Takeaways and Practical Insights  </li>
+<li>Building AI-Powered Marketing Brochures with OpenAI API and Python  </li>
+<li>JupyterLab Tutorial: Web Scraping for AI-Powered Company Brochures  </li>
+<li>Structured Outputs in LLMs: Optimizing JSON Responses for AI Projects  </li>
+<li>Creating and Formatting Responses for Brochure Content  </li>
+<li>Final Adjustments: Optimizing Markdown and Streaming in JupyterLab  </li>
+<li>Multi-Shot Prompting: Enhancing LLM Reliability in AI Projects  </li>
+<li>Assignment: Developing Your Customized LLM-Based Tutor  </li>
+<li>Wrapping Up: Achievements and Next Steps</li>
+</ul>
+</details>
+<h2 id="2-build-a-multi-modal-chatbot">2: Build a Multi-Modal Chatbot</h2>
+<p>This second module teaches you how to extend LLMs beyond text by building rich, interactive chatbots. You will integrate multiple AI APIs (OpenAI, Claude, Gemini), implement real-time streaming outputs in Python, and craft adversarial conversation flows. You’ll prototype and deploy customizable UIs with Gradio-adding multi-shot prompting, context enrichment, and live function calling-to empower LLMs with external tools and code execution. Finally, you’ll combine text, images, and audio into a unified multimodal assistant, integrating DALL·E image generation, sound processing, and agentic workflows for a fully featured conversational AI.</p>
+<details>
+<summary>Click to expand Module Overview</summary>
+<ul>
+<li>Multiple AI APIs: OpenAI, Claude, and Gemini for LLM Engineers  </li>
+<li>Streaming AI Responses: Implementing Real-Time LLM Output in Python  </li>
+<li>How to Create Adversarial AI Conversations Using OpenAI and Claude APIs  </li>
+<li>AI Tools: Exploring Transformers &amp; Frontier LLMs for Developers  </li>
+<li>Building AI UIs with Gradio: Quick Prototyping for LLM Engineers  </li>
+<li>Gradio Tutorial: Create Interactive AI Interfaces for OpenAI GPT Models  </li>
+<li>Implementing Streaming Responses with GPT and Claude in Gradio UI  </li>
+<li>Building a Multi-Model AI Chat Interface with Gradio: GPT vs Claude  </li>
+<li>Building Advanced AI UIs: From OpenAI API to Chat Interfaces with Gradio  </li>
+<li>Building AI Chatbots: Gradio for Customer Support Assistants  </li>
+<li>Build a Conversational AI Chatbot with OpenAI &amp; Gradio: Step-by-Step  </li>
+<li>Enhancing Chatbots with Multi-Shot Prompting and Context Enrichment  </li>
+<li>AI Tools: Empowering LLMs to Run Code on Your Machine  </li>
+<li>Using AI Tools with LLMs: Enhancing Large Language Model Capabilities  </li>
+<li>Building an AI Airline Assistant: Implementing Tools with OpenAI GPT-4  </li>
+<li>How to Equip LLMs with Custom Tools: OpenAI Function Calling Tutorial  </li>
+<li>AI Tools: Building Advanced LLM-Powered Assistants with APIs  </li>
+<li>Multimodal AI Assistants: Integrating Image and Sound Generation  </li>
+<li>Multimodal AI: Integrating DALL-E 3 Image Generation in JupyterLab  </li>
+<li>Build a Multimodal AI Agent: Integrating Audio &amp; Image Tools  </li>
+<li>How to Build a Multimodal AI Assistant: Integrating Tools and Agents</li>
+</ul>
+</details>
+<h2 id="3-open-source-gen-ai-solutions">3: Open-Source Gen AI Solutions</h2>
+<p>This module dives into open-source generative AI by guiding you through the Hugging Face ecosystem and Google Colab workflows. You’ll learn to browse and leverage community models, datasets, and Spaces; configure Colab notebooks with secure API key management; and run inference using Transformers pipelines for tasks like text generation, summarization, and joke creation. You’ll explore tokenizer architectures-LLAMA, Phi-2, Qwen, Starcoder-and compare their performance to prepare for advanced text processing. Finally, you’ll combine frontier and open-source models to build custom applications, such as an AI-powered meeting-minutes generator and a synthetic test-data generator for business use.</p>
+<details>
+<summary>Click to expand Module Overview</summary>
+<ul>
+<li>Hugging Face Tutorial: Exploring Open-Source AI Models and Datasets  </li>
+<li>Exploring HuggingFace Hub: Models, Datasets &amp; Spaces for AI Developers  </li>
+<li>Intro to Google Colab: Cloud Jupyter Notebooks for Machine Learning  </li>
+<li>Hugging Face Integration with Google Colab: Secrets and API Keys Setup  </li>
+<li>Google Colab: Run Open-Source AI Models with Hugging Face  </li>
+<li>Hugging Face Transformers: Using Pipelines for AI Tasks in Python  </li>
+<li>Hugging Face Pipelines: Simplifying AI Tasks with Transformers Library  </li>
+<li>HuggingFace Pipelines: Efficient AI Inference for ML Tasks  </li>
+<li>Exploring Tokenizers in Open-Source AI: Llama, Phi-2, Qwen, &amp; Starcoder  </li>
+<li>Tokenization Techniques in AI: Using AutoTokenizer with LLAMA 3.1 Model  </li>
+<li>Comparing Tokenizers: Llama, PHI-3, and OWEN2 for Open-Source AI Models  </li>
+<li>Hugging Face Tokenizers: Preparing for Advanced AI Text Generation  </li>
+<li>Hugging Face Model Class: Running Inference on Open-Source AI Models  </li>
+<li>Hugging Face Transformers: Loading &amp; Quantizing LLMs with Bits &amp; Bytes  </li>
+<li>Hugging Face Transformers: Generating Jokes with Open-Source AI Models  </li>
+<li>Hugging Face Transformers: Models, Pipelines, and Tokenizers  </li>
+<li>Combining Frontier &amp; Open-Source Models for Audio-to-Text Summarization  </li>
+<li>Using Hugging Face &amp; OpenAI for AI-Powered Meeting Minutes Generation  </li>
+<li>Build a Synthetic Test Data Generator: Open-Source AI Model for Business</li>
+</ul>
+</details>
+<h2 id="4-model-evaluation-for-code-business-tasks">4: Model Evaluation for Code &amp; Business Tasks</h2>
+<p>This fourth module teaches you how to rigorously evaluate and compare language models for software development and enterprise use cases. You will learn criteria for selecting the right LLM-open or closed source-by examining scaling laws, benchmark limitations, and specialized leaderboards. Hands-on comparisons (GPT-4 vs. Claude vs. open-source models) will cover code generation performance, error analysis, and business-centric metrics. You will also build evaluation tools-such as Gradio UIs and Hugging Face endpoints-for systematic testing, discover common pitfalls, and master techniques to optimize model choice and integration for real-world code and business tasks.</p>
+<details>
+<summary>Click to expand Module Overview</summary>
+<ul>
+<li>How to Choose the Right LLM: Comparing Open and Closed Source Models  </li>
+<li>Chinchilla Scaling Law: Optimizing LLM Parameters and Training Data Size  </li>
+<li>Limitations of LLM Benchmarks: Overfitting and Training Data Leakage  </li>
+<li>Evaluating Large Language Models: 6 Next-Level Benchmarks Unveiled  </li>
+<li>HuggingFace OpenLLM Leaderboard: Comparing Open-Source Language Models  </li>
+<li>Master LLM Leaderboards: Comparing Open Source and Closed Source Models  </li>
+<li>Comparing LLMs: Top 6 Leaderboards for Evaluating Language Models  </li>
+<li>Specialized LLM Leaderboards: Finding the Best Model for Your Use Case  </li>
+<li>LLAMA vs GPT-4: Benchmarking Large Language Models for Code Generation  </li>
+<li>Human-Rated Language Models: Understanding the LM Sys Chatbot Arena  </li>
+<li>Commercial Applications of Large Language Models: From Law to Education  </li>
+<li>Comparing Frontier and Open-Source LLMs for Code Conversion Projects  </li>
+<li>Leveraging Frontier Models for High-Performance Code Generation in C++  </li>
+<li>Comparing Top LLMs for Code Generation: GPT-4 vs Claude 3.5 Sonnet  </li>
+<li>Optimizing Python Code with Large Language Models: GPT-4 vs Claude 3.5  </li>
+<li>Code Generation Pitfalls: When Large Language Models Produce Errors  </li>
+<li>Blazing Fast Code Generation: How Claude Outperforms Python by 13,000x  </li>
+<li>Building a Gradio UI for Code Generation with Large Language Models  </li>
+<li>Optimizing C++ Code Generation: Comparing GPT and Claude Performance  </li>
+<li>Comparing GPT-4 and Claude for Code Generation: Performance Benchmarks  </li>
+<li>Open Source LLMs for Code Generation: Hugging Face Endpoints Explored  </li>
+<li>How to Use HuggingFace Inference Endpoints for Code Generation Models  </li>
+<li>Integrating Open-Source Models with Frontier LLMs for Code Generation  </li>
+<li>Comparing Code Generation: GPT-4, Claude, and CodeQuen LLMs  </li>
+<li>Code Generation with LLMs: Techniques and Model Selection  </li>
+<li>Evaluating LLM Performance: Model-Centric vs Business-Centric Metrics  </li>
+<li>LLM Code Generation: Advanced Challenges for Python Developers</li>
+</ul>
+</details>
+<h2 id="5-rag-with-langchain">5: RAG with LangChain</h2>
+<p>This module shows how to augment LLMs with external knowledge through retrieval-augmented generation. You will learn the fundamentals of RAG-why and how to leverage external data to improve response accuracy-and build a DIY RAG system from scratch. You’ll explore vector embeddings, set up OpenAI and Chroma stores, and use LangChain’s text splitters and pipeline abstractions to assemble efficient retrieval workflows. Hands-on tutorials will cover embedding visualization with t-SNE, FAISS vs. Chroma comparisons, pipeline debugging, and troubleshooting common issues. By the end, you will have built your own AI knowledge-worker capable of combining LLM reasoning with up-to-date information.</p>
+<details>
+<summary>Click to expand Module Overview</summary>
+<ul>
+<li>RAG Fundamentals: Leveraging External Data to Improve LLM Responses  </li>
+<li>Building a DIY RAG System: Implementing Retrieval-Augmented Generation  </li>
+<li>Understanding Vector Embeddings: The Key to RAG and LLM Retrieval  </li>
+<li>Unveiling LangChain: Simplify RAG Implementation for LLM Applications  </li>
+<li>LangChain Text Splitter Tutorial: Optimizing Chunks for RAG Systems  </li>
+<li>Preparing for Vector Databases: OpenAI Embeddings and Chroma in RAG  </li>
+<li>Vector Embeddings: OpenAI and Chroma for LLM Engineering  </li>
+<li>Visualizing Embeddings: Exploring Multi-Dimensional Space with t-SNE  </li>
+<li>Building RAG Pipelines: From Vectors to Embeddings with LangChain  </li>
+<li>Implementing RAG Pipeline: LLM, Retriever, and Memory in LangChain  </li>
+<li>Retrieval-Augmented Generation: Hands-On LLM Integration  </li>
+<li>Master RAG Pipeline: Building Efficient RAG Systems  </li>
+<li>Optimizing RAG Systems: Troubleshooting and Fixing Common Problems  </li>
+<li>Switching Vector Stores: FAISS vs Chroma in LangChain RAG Pipelines  </li>
+<li>Demystifying LangChain: Behind-the-Scenes of RAG Pipeline Construction  </li>
+<li>Debugging RAG: Optimizing Context Retrieval in LangChain  </li>
+<li>Build Your Personal AI Knowledge Worker: RAG for Productivity Boost</li>
+</ul>
+</details>
+<h2 id="6-fine-tuning-with-loraqlora">6: Fine-Tuning with LoRA/QLoRA</h2>
+<p>This module covers end-to-end fine-tuning of large language models using parameter-efficient methods. You will learn how to source and curate balanced datasets, apply scrubbing techniques, and engineer features for LLM training. You’ll compare model- and business-centric evaluation metrics, build baseline ML models, and analyze price-description correlations. Hands-on tutorials will guide you through preparing JSONL files, launching OpenAI fine-tuning jobs, and tracking training progress with Weights &amp; Biases. Finally, you’ll explore challenges in loss monitoring, hyperparameter optimization for LoRA/QLoRA, and best practices for productionizing fine-tuned models at scale.</p>
+<details>
+<summary>Click to expand Module Overview</summary>
+<ul>
+<li>Fine-Tuning Large Language Models: From Inference to Training  </li>
+<li>Finding and Crafting Datasets for LLM Fine-Tuning: Sources &amp; Techniques  </li>
+<li>Data Curation Techniques for Fine-Tuning LLMs on Product Descriptions  </li>
+<li>Optimizing Training Data: Scrubbing Techniques for LLM Fine-Tuning  </li>
+<li>Evaluating LLM Performance: Model-Centric vs Business-Centric Metrics  </li>
+<li>LLM Deployment Pipeline: From Business Problem to Production Solution  </li>
+<li>Prompting, RAG, and Fine-Tuning: When to Use Each Approach  </li>
+<li>Productionizing LLMs: Best Practices for Deploying AI Models at Scale  </li>
+<li>Optimizing Large Datasets for Model Training: Data Curation Strategies  </li>
+<li>How to Create a Balanced Dataset for LLM Training: Curation Techniques  </li>
+<li>Finalizing Dataset Curation: Analyzing Price-Description Correlations  </li>
+<li>How to Create and Upload a High-Quality Dataset on HuggingFace  </li>
+<li>Feature Engineering and Bag of Words: Building ML Baselines for NLP  </li>
+<li>Baseline Models in ML: Implementing Simple Prediction Functions  </li>
+<li>Feature Engineering Techniques for Amazon Product Price Prediction  </li>
+<li>Optimizing LLM Performance: Advanced Feature Engineering Strategies  </li>
+<li>Linear Regression for LLM Fine-Tuning: Baseline Model Comparison  </li>
+<li>Bag of Words NLP: Implementing Count Vectorizer for Text Analysis in ML  </li>
+<li>Support Vector Regression vs Random Forest: Machine Learning Face-Off  </li>
+<li>Comparing Traditional ML Models: From Random to Random Forest  </li>
+<li>Evaluating Frontier Models: Comparing Performance to Baseline Frameworks  </li>
+<li>Human vs AI: Evaluating Price Prediction Performance in Frontier Models  </li>
+<li>GPT-4o Mini: Frontier AI Model Evaluation for Price Estimation Tasks  </li>
+<li>Comparing GPT-4 and Claude: Model Performance in Price Prediction Tasks  </li>
+<li>Frontier AI Capabilities: LLMs Outperforming Traditional ML Models  </li>
+<li>Fine-Tuning LLMs with OpenAI: Preparing Data, Training, and Evaluation  </li>
+<li>How to Prepare JSONL Files for Fine-Tuning Large Language Models (LLMs)  </li>
+<li>Step-by-Step Guide: Launching GPT Fine-Tuning Jobs with OpenAI API  </li>
+<li>Fine-Tuning LLMs: Track Training Loss &amp; Progress with Weights &amp; Biases  </li>
+<li>Evaluating Fine-Tuned LLMs Metrics: Analyzing Training &amp; Validation Loss  </li>
+<li>LLM Fine-Tuning Challenges: When Model Performance Doesn't Improve  </li>
+<li>Fine-Tuning Frontier LLMs: Challenges &amp; Best Practices for Optimization</li>
+</ul>
+</details>
+<h2 id="7-fine-tuned-price-prediction-model">7: Fine-Tuned Price Prediction Model</h2>
+<p>This module delivers a deep dive into building a high-performance price-prediction model through parameter-efficient fine-tuning techniques. You will master LoRA and QLoRA adaptors, learn advanced quantization methods (8-bit, NF4), and analyze their impact on model size and accuracy. Guided tutorials cover selecting and tokenizing the optimal base model, configuring SFTTrainer for 4-bit fine-tuning, and tuning epochs, batch sizes, learning rates, and optimizers. You will launch QLoRA training jobs, monitor loss and performance with Weights &amp; Biases, apply cost-saving strategies like smaller datasets, and visualize training metrics. Finally, you will evaluate your proprietary fine-tuned LLM against GPT-4 and business benchmarks, refining hyperparameters to achieve best-in-class price-prediction results.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": ".", "features": [], "search": "assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.56ea9cef.min.js"></script>
+      
+        <script src="javascripts/mermaid.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>

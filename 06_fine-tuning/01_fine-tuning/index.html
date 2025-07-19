@@ -1,0 +1,1144 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
+    
+    
+      
+        <title>Fine-Tuning Large Language Models: From Inference to Training - My LLM Journey</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#fine-tuning-large-language-models-from-inference-to-training" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="My LLM Journey" class="md-header__button md-logo" aria-label="My LLM Journey" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            My LLM Journey
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Fine-Tuning Large Language Models: From Inference to Training
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="My LLM Journey" class="md-nav__button md-logo" aria-label="My LLM Journey" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    My LLM Journey
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Build Your First LLM Product
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Build Your First LLM Product
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_first_llm_product/01_jumping_right_llm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Jumping Right into LLM Engineering
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_first_llm_product/02_setting-up-ollama/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Setting Up Ollama for Local LLM Deployment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_first_llm_product/03_llm-engineering-roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LLM Engineering Roadmap
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Build a Multi-Modal Chatbot
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Build a Multi-Modal Chatbot
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_multi_modal_chatbot/01_multiple_ai_apis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Multiple AI APIs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_multi_modal_chatbot/02_streaming_ai_responses/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Streaming AI Responses
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Open-Source Gen AI Solutions
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Open-Source Gen AI Solutions
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_open-source-solutions/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Model Evaluation for Code & Business Tasks
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Model Evaluation for Code & Business Tasks
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04_model-evaluation/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    RAG with LangChain
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            RAG with LangChain
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05_rag-with-langchain/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Fine-Tuning with LoRA/QLoRA
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Fine-Tuning with LoRA/QLoRA
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Fine-Tuned Price Prediction Model
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Fine-Tuned Price Prediction Model
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07_fine-tuned-price-prediction/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Autonomous Multi-Agent Systems
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Autonomous Multi-Agent Systems
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08_autonomous-multi-agent/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-inference" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is Inference?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transitioning-to-training" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transitioning to Training
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-importance-of-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Importance of Data
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-fine-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is Fine-Tuning?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-commercial-problem-price-estimation" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Commercial Problem: Price Estimation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-this-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why This Problem?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next Steps
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="fine-tuning-large-language-models-from-inference-to-training">Fine-Tuning Large Language Models: From Inference to Training</h1>
+<p>This documentation is designed for beginners to understand the concepts of fine-tuning large language models. It covers the transition from inference to training, the importance of data preparation, and introduces a practical example of fine-tuning a model for a specific task.</p>
+<hr />
+<h2 id="introduction">Introduction</h2>
+<p>Fine-tuning large language models is a critical step in making these models more effective for specific tasks. This guide introduces the concepts of inference, training, and fine-tuning, with a focus on preparing and using data effectively. It also outlines a practical example of fine-tuning a model to estimate product prices based on their descriptions, which serves as an accessible and measurable problem for beginners.</p>
+<p>The following diagram illustrates the high-level process of moving from a pre-trained model to a fine-tuned model:</p>
+<pre class="mermaid"><code>graph TD
+    A[Pre-trained LLM&lt;br&gt;General Knowledge] --&gt; B[Fine-Tuning Process&lt;br&gt;Task-Specific Data]
+    B --&gt; C[Fine-Tuned LLM&lt;br&gt;Specialized for Task]
+    C --&gt; D[Inference&lt;br&gt;Predicting Outputs]</code></pre>
+<hr />
+<h2 id="what-is-inference">What is Inference?</h2>
+<p>Inference is the process of using a pre-trained language model to make predictions or generate outputs based on input data. For example, when you provide a sentence to a model and it predicts the next word or generates a response, that’s inference.</p>
+<p><strong>Key points about inference:</strong></p>
+<ul>
+<li><strong>Pre-trained Models:</strong> These models have been trained on vast amounts of data to understand language patterns.</li>
+<li><strong>Runtime Predictions:</strong> During inference, the model uses its learned knowledge to predict the next token (e.g., a word or part of a word) based on the input it receives.</li>
+<li><strong>Techniques to Improve Inference:</strong></li>
+<li>Multi-shot Prompting: Providing multiple examples in the prompt to guide the model’s output.</li>
+<li>Prompt Chaining: Sending multiple prompts in sequence, building on previous outputs to refine results.</li>
+<li>Tool Usage: Allowing the model to interact with external tools (e.g., calculating prices).</li>
+<li>Retrieval-Augmented Generation (RAG): Injecting relevant context into the prompt to improve the model’s output.</li>
+</ul>
+<p>Inference focuses on optimizing how we use an existing model without changing its internal structure. The following diagram shows the inference process:</p>
+<pre class="mermaid"><code>graph LR
+    A[Input Prompt] --&gt; B[Pre-trained LLM]
+    B --&gt; C[Output Prediction&lt;br&gt; e.g., Next Token, Text, JSON]
+    C --&gt; D[Refined Output&lt;br&gt; Using Prompting Techniques]</code></pre>
+<hr />
+<h2 id="transitioning-to-training">Transitioning to Training</h2>
+<p>Training involves modifying the internal parameters (or weights) of a neural network to improve its performance for a specific task. Unlike inference, which uses a pre-trained model as-is, training adjusts the model to better understand a particular problem or dataset.</p>
+<p><strong>Key differences:</strong></p>
+<ul>
+<li><strong>Inference:</strong> Uses a fixed model to generate outputs.</li>
+<li><strong>Training:</strong> Updates the model’s parameters to improve its predictions.</li>
+</ul>
+<p>Training a large language model from scratch is expensive, often costing millions of dollars due to the computational resources required for models with billions of parameters. However, transfer learning makes training more accessible by allowing us to start with a pre-trained model and fine-tune it for a specific task.</p>
+<p>The diagram below illustrates the transition from inference to training:</p>
+<pre class="mermaid"><code>graph TD
+    A[Inference&lt;br&gt; Using Pre-trained Model ] --&gt; B[Training&lt;br&gt; Adjusting Model Parameters]
+    B --&gt; C[Fine-Tuning&lt;br&gt;Task-Specific Adjustments]
+    C --&gt; D[Improved Model&lt;br&gt;Better Task Performance]</code></pre>
+<hr />
+<h2 id="the-importance-of-data">The Importance of Data</h2>
+<p>Data is the foundation of any successful machine learning project, including fine-tuning LLMs. While data preparation may not seem exciting, it is one of the most critical steps in the process.</p>
+<p><strong>Key aspects of data preparation:</strong></p>
+<ul>
+<li><strong>Crafting a Dataset:</strong> Collecting and organizing data relevant to the task.</li>
+<li><strong>Cleaning and Curating:</strong> Removing errors, duplicates, or irrelevant information to ensure high-quality data.</li>
+<li><strong>Visualization:</strong> Exploring the data to understand its structure, patterns, and potential issues.</li>
+<li><strong>Defining Success Metrics:</strong> Establishing clear, measurable goals to evaluate the model’s performance.</li>
+</ul>
+<p>For example, if you’re fine-tuning a model to estimate product prices, you need a dataset with product descriptions and their corresponding prices. The quality and relevance of this data directly impact the model’s ability to make accurate predictions.</p>
+<p>The following diagram outlines the data preparation process:</p>
+<pre class="mermaid"><code>graph TD
+    A[Raw Data&lt;br&gt;Product Descriptions, Prices] --&gt; B[Cleaning&lt;br&gt;Remove Errors, Duplicates]
+    B --&gt; C[Curating&lt;br&gt;Select Relevant Data]
+    C --&gt; D[Visualization&lt;br&gt;Understand Patterns]
+    D --&gt; E[Prepared Dataset&lt;br&gt;Ready for Fine-Tuning]</code></pre>
+<hr />
+<h2 id="what-is-fine-tuning">What is Fine-Tuning?</h2>
+<p>Fine-tuning is the process of taking a pre-trained language model and continuing its training on a smaller, task-specific dataset. This allows the model to adapt its general knowledge to a specialized problem.</p>
+<p><strong>Key points:</strong></p>
+<ul>
+<li><strong>Transfer Learning:</strong> Fine-tuning leverages the knowledge a model has already gained from large-scale training (e.g., understanding grammar, context, or general facts) and builds on it with task-specific data.</li>
+<li><strong>Efficiency:</strong> Fine-tuning is less resource-intensive than training a model from scratch, making it feasible for smaller budgets.</li>
+<li><strong>Techniques:</strong> Methods like QLoRA (Quantized Low-Rank Adaptation) are used to fine-tune models efficiently, reducing memory and computational requirements.</li>
+<li><strong>Goal:</strong> Adjust the model’s parameters to improve its performance on a specific task, such as generating more accurate outputs or solving a specialized problem.</li>
+</ul>
+<p>For example, a pre-trained model might understand language well but struggle to estimate the price of a washing machine based on its description. Fine-tuning with a dataset of product descriptions and prices helps the model learn this specific task.</p>
+<p>The diagram below shows the fine-tuning process:</p>
+<pre class="mermaid"><code>graph TD
+    A[Pre-trained LLM&lt;br&gt;Billions of Parameters] --&gt; B[Task-Specific Dataset&lt;br&gt;e.g., Product Descriptions]
+    B --&gt; C[Fine-Tuning&lt;br&gt;Using QLoRA or Similar]
+    C --&gt; D[Fine-Tuned LLM&lt;br&gt;Specialized for Price Estimation]</code></pre>
+<hr />
+<h2 id="the-commercial-problem-price-estimation">The Commercial Problem: Price Estimation</h2>
+<p>The example task in this guide is to fine-tune a model for an e-commerce company to estimate the price of products (e.g., electronics, appliances, or car accessories) based on their textual descriptions. This is a practical problem with a clear, measurable outcome.</p>
+<p><strong>Key aspects:</strong></p>
+<ul>
+<li><strong>Input:</strong> A textual description of a product (e.g., "A 55-inch 4K LED Smart TV with HDR").</li>
+<li><strong>Output:</strong> A numerical price estimate (e.g., $599.99).</li>
+<li><strong>Dataset:</strong> A collection of product descriptions paired with their actual prices.</li>
+<li><strong>Goal:</strong> Train the model to predict accurate prices based on descriptions alone.</li>
+</ul>
+<p>The diagram below illustrates the price estimation task:</p>
+<pre class="mermaid"><code>graph LR
+    A[Product Description&lt;br&gt;Text Input] --&gt; B[Fine-Tuned LLM]
+    B --&gt; C[Price Estimate&lt;br&gt;Numerical Output]
+    C --&gt; D[Compare with Actual Price&lt;br&gt;Evaluate Accuracy]</code></pre>
+<hr />
+<h2 id="why-this-problem">Why This Problem?</h2>
+<p>The price estimation task is chosen for several reasons:</p>
+<ul>
+<li><strong>Clear Measurability:</strong> Success is easy to evaluate by comparing the model’s predicted price to the actual price, unlike text generation tasks (e.g., translation or summarization), which require subjective or complex metrics.</li>
+<li><strong>Suitability for LLMs:</strong> While price estimation is traditionally a regression problem, modern LLMs can handle it effectively by generating numerical outputs (e.g., in JSON format). Their emergent intelligence makes them surprisingly good at such tasks.</li>
+<li><strong>Engaging and Practical:</strong> The problem is relatable and has real-world applications in e-commerce, making it an engaging challenge for beginners.</li>
+</ul>
+<p>The following diagram compares traditional regression models and LLMs for price estimation:</p>
+<pre class="mermaid"><code>graph TD
+    A[Price Estimation Problem] --&gt; B[Traditional Regression Model&lt;br&gt;Predicts Numbers]
+    A --&gt; C[Fine-Tuned LLM&lt;br&gt;Generates Numbers in JSON]
+    B --&gt; D[Simple but Limited]
+    C --&gt; E[Flexible and Powerful]</code></pre>
+<hr />
+<h2 id="next-steps">Next Steps</h2>
+<p>The next phase involves diving into the data preparation process, including collecting, cleaning, and visualizing the dataset. You’ll also define success metrics to evaluate the fine-tuned model’s performance. Subsequent steps will cover implementing the fine-tuning process and testing the model on the price estimation task.</p>
+<p>The diagram below outlines the overall workflow for the project:</p>
+<pre class="mermaid"><code>graph TD
+    A[Collect Data&lt;br&gt;Product Descriptions, Prices] --&gt; B[Prepare Data&lt;br&gt;Clean, Curate, Visualize]
+    B --&gt; C[Fine-Tune LLM&lt;br&gt;Using Task-Specific Data]
+    C --&gt; D[Test Model&lt;br&gt;Price Estimation]
+    D --&gt; E[Evaluate Results&lt;br&gt;Compare Predicted vs. Actual Prices]
+    E --&gt; F[Iterate and Improve&lt;br&gt;Adjust Data or Fine-Tuning]</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.56ea9cef.min.js"></script>
+      
+        <script src="../../javascripts/mermaid.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>
